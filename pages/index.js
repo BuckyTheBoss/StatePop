@@ -1,11 +1,11 @@
-import { Autocomplete, TextField } from '@mui/material';
+import { Autocomplete, Button, TextField } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import {Avatar, Card, CardHeader, Grid} from "@mui/material";
 import Layout from "@/components/Layout";
 import StateCard from '@/components/stateCard';
 import { stateList } from '@/states';
-
+import { CSVLink, CSVDownload } from "react-csv";
 
 
 export default function Locations() {
@@ -50,10 +50,9 @@ export default function Locations() {
       }, []);
 
     return (
-    <Layout className={'mt-5'}>
-      <Grid  className={'mt-3'} spacing={3}>
+    <Layout >
+      <Grid spacing={3}>
         {!loading && <Autocomplete 
-            // className={'mt-3'}
             options={dropdownData}
             renderInput={(params) => <TextField {...params} label="State" />}
             filterOptions={filterOptions}
@@ -65,6 +64,7 @@ export default function Locations() {
               }}
             />}
         {chosenState && <StateCard stateData={chosenState}/>}
+        {stateData && <Button sx={{mt:1}} variant="contained"><CSVLink filename={"statesPopulation.csv"} data={stateData}>Download All state population data</CSVLink></Button>}
       </Grid>
     </Layout>
   )

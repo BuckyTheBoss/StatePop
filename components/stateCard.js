@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 
 export default function StateCard({ stateData }) {
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 275, m: 1 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           data year: {stateData['ID Year']}
@@ -20,11 +20,9 @@ export default function StateCard({ stateData }) {
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
             Population: {stateData.Population}
         </Typography>
-        
+      
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+      
     </Card>
   );
 }
